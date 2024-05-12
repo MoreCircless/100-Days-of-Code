@@ -13,6 +13,7 @@ elif computer == 1:
 elif computer == 2:
     computer_choice = "S"
 
+
 def rock():
     print("""
     _______
@@ -43,37 +44,66 @@ def scissors():
 ---.__(___)
 """)
 
-def player_chose():
-    print("Player chose:")
-def computer_chose():
-    print("Computer chose:")
+def player_chose(name):
+    print(f"Player chose:{name}")
+def computer_chose(name):
+    print(f"Computer chose:{name}")
 
-if player.capitalize == "R" and computer == "R":
-    player_chose()
-    rock()
-    computer_chose()
-    rock()
-'''
-    if player.capitalize == "R" and computer == "P":
-        player_chose()
-        rock()
-        computer_chose()
+def player_win():
+    print("Player Win!!!")
+def computer_win():
+    print("Computer Win!!!")
+def tie():
+    print("It is a tie!!!")
+
+
+if player == "P":
+    player_chose("Paper")
+    paper()
+    if computer_choice == "P":
+        computer_chose("Paper")
         paper()
-    if player.capitalize == "R" and computer == "S":
-        
-    if player.capitalize == "P" and computer == "R":
-        print("YOU WINS!")
-    if player.capitalize == "P" and computer == "P":
-        print("TIE")
-    if player.capitalize == "P" and computer == "S":
-        print("COMPUTER WINS")
-    if player.capitalize == "S" and computer == "R":
-        print("Computer wins")
-    if player.capitalize == "S" and computer == "P":
-        print("You wins")
-    if player.capitalize == "S" and computer == "S":
-        print("TIE")
-'''
+        tie()
+    elif computer_choice == "R":
+        computer_chose("Rock")
+        rock()
+        player_win()
+    elif computer_choice == "S":
+        computer_chose("Scissors")
+        scissors()
+        computer_win()
+elif player == "R":
+    player_chose("Rock")
+    rock()
+    if computer_choice == "P":
+        computer_chose("Paper")
+        paper()
+        computer_win()
+    elif computer_choice == "R":
+        computer_chose("Rock")
+        rock()
+        tie()
+    elif computer_choice == "S":
+        computer_chose("Scissors")
+        scissors()
+        player_win()
+elif player == "S":
+    player_chose("Scissors")
+    scissors()
+    if computer_choice == "P":
+        computer_chose("Paper")
+        paper()
+        player_win()
+    elif computer_choice == "R":
+        computer_chose("Rock")
+        rock()
+        computer_win()
+    elif computer_choice == "S":
+        computer_chose("Scissors")
+        scissors()
+        tie()
+else:
+    print("Invalid input!!!")
 
 
 print("GAME FINISHED!!")
