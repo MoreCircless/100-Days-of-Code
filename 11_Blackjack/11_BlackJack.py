@@ -4,6 +4,7 @@ import os
 game_state = True
 
 def deal_card():
+    """When this function gets called returns a random card"""
     return random.choice(cards)
 def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
