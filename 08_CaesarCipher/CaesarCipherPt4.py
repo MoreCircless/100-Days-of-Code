@@ -1,4 +1,7 @@
+from artCaeCiph import logo
 alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+
+print(logo)
 
 def caesar(start_text, shift_amount, cipher_direction):
   end_text = ""
@@ -26,9 +29,7 @@ direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
 text = input("Type your message:\n").lower()
 shift = int(input("Type the shift number:\n"))
 
-#TODO-2: What if the user enters a shift that is greater than the number of letters in the alphabet?
-#Try running the program and entering a shift number of 45.
-#Add some code so that the program continues to work even if the user enters a shift number greater than 26. 
-#Hint: Think about how you can use the modulus (%).
+fix_shift_amount = shift % 26
 
-caesar(start_text=text, shift_amount=shift, cipher_direction=direction)
+
+caesar(start_text=text, shift_amount=fix_shift_amount, cipher_direction=direction)
