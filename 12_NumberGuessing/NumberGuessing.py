@@ -56,7 +56,7 @@ while status == True:
         print("You lose :(")
         status = False 
         
-    if status == True:
+    elif status == True:
         print(f"You have {trys} lives left")
     
 
