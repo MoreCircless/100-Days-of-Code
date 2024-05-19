@@ -9,9 +9,7 @@ def welcome():
 
     """
     print(logo)
-
     print("Welcome to the GUESS THE NUMBER game!!!")
     print("In order to win you need to guess the name")
     print("There are two levels of difficulty, easy and hard")
-    print("Hard -> 5 Attempts)
-    print("Easy -> 10 Attempts")
+    print("Easy -> 10 Attempt")
