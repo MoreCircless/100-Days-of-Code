@@ -1,3 +1,4 @@
+
 MENU = {
     "espresso": {
         "ingredients": {
@@ -78,7 +79,16 @@ def payment(choice):
       return True 
 
    
-def product_update()
+def product_update(selection):
+   choice_coffee = MENU[selection]
+   ingredients = choice_coffee["ingredients"]
+   resources["coffee"] -= ingredients["coffee"]
+   resources["water"] -= ingredients["water"]
+   resources["milk"] -= ingredients["milk"]
+   
+
+
+   
 
 
 def report():
@@ -93,22 +103,25 @@ while True:
    user_choice = input("-> ")
    if user_choice == "espresso":
       if ing_check("espresso"):
+         print(f"The cost of {user_choice} is {MENU['espresso']['cost']}$")
          payment_check = payment("espresso")
-         if payment_check == True:
+         if payment_check:
             product_update("espresso")
       else:
          no_resources()
    elif user_choice == "latte":
       if ing_check("latte"):
+         print(f"The cost of {user_choice} is {MENU['latte']['cost']}$")
          payment_check = payment("latte")
-         if payment_check == True:
+         if payment_check:
             product_update("latte")
       else:
          no_resources()
    elif user_choice == "cappuccino":
       if ing_check("cappuccino"):
+         print(f"The cost of {user_choice} is {MENU['cappuccino']['cost']}$")
          payment_check = payment("cappuccino")
-         if payment_check == True:
+         if payment_check:
             product_update("espresso")
       else: 
          no_resources()
