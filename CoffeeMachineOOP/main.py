@@ -3,7 +3,8 @@ from coffee_maker import CoffeeMaker
 from money_machine import MoneyMachine
 
 
-money_machine = MoneyMachine()
-coffee_maker = CoffeeMaker()
+menu = Menu()
 
-money_machine.report()
+
+print(menu.get_items())
+menu = Menu
