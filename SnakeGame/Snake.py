@@ -1,5 +1,4 @@
-from re import I
-from turtle import Screen, Turtle, left
+from turtle import Screen, Turtle
 import time
 import random
 
@@ -27,12 +26,25 @@ class Snake:
         
     def create_snake(self):
         for position in STARTING_POSITIONS:
-            new_segment = Turtle("square")
-            new_segment.penup()
-            new_segment.color("white")
-            new_segment.goto(position)
-            self.segments.append(new_segment)
+            self.add_segments(position)
+            # new_segment = Turtle("square")
+            # new_segment.penup()
+            # new_segment.color("white")
+            # new_segment.goto(position)
+            # self.segments.append(new_segment)
     
+    def add_segments(self, position):
+        new_segment = Turtle("square")
+        new_segment.penup()
+        new_segment.color("white")
+        new_segment.goto(position)
+        self.segments.append(new_segment)
+        
+    
+    
+    def extend(self):
+        self.add_segments(self.segments[-1].position())
+        
     
     def move(self):
         for seg_num in range(len(self.segments)-1, 0, -1):
@@ -81,20 +93,44 @@ class Food(Turtle):
         random_y = random.randint(-280, 280)
         self.goto(random_x, random_y)
     
+# Scoreboard
+ALIGNAMENT = "Center"
+FONT = ('Arial', 20, 'normal')
+
+class Scoreboard(Turtle):
+    def __init__(self):
+        super().__init__()
+        self.score = 0
+        self.color("white")
+        self.hideturtle()
+        self.penup()
+        self.goto(0, 270)
+        self.update_scoreboard()
+        
+                
+    def update_scoreboard(self):
+        self.write(arg=f"Score: {self.score}", move=False, align=ALIGNAMENT, font=FONT)
 
 
+    def game_over(self):
+        self.goto(0,0)
+        self.write(arg="GAME OVER", move=False, align=ALIGNAMENT, font=FONT)
 
-
+                
+    def increase_score(self):
+        self.score += 1
+        self.clear()
+        self.update_scoreboard()
           
 # Code
 snake = Snake()
 food = Food()
-
+scoreboard = Scoreboard()
 game_is_on = True
 
 while game_is_on:
     screen.update()
-    time.sleep(0.1)
+    time.sleep(0.08)
     snake.move()
     screen.listen()
     screen.onkey(snake.up, "Up")
@@ -102,8 +138,21 @@ while game_is_on:
     screen.onkey(snake.left, "Left")
     screen.onkey(snake.right, "Right")
     if snake.head.distance(food) < 15:
-        print("nom nom nom")
         food.refresh()
+        snake.extend()
+        scoreboard.increase_score()
+        
+    # Detect collision
+    if snake.head.xcor() > 280 or snake.head.xcor() < -280 or snake.head.ycor() > 280 or snake.head.ycor() < -280:
+        game_is_on = False
+        scoreboard.game_over()
+    
+    #Detect collision with tail
+    for segment in snake.segments[1:]:
+        if snake.head.distance(segment) < 10:
+            game_is_on = False
+            scoreboard.game_over()
+        
 
 screen.listen()
 screen.onkey(snake.up, "Up")
