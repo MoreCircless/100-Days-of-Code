@@ -3,8 +3,4 @@ from coffee_maker import CoffeeMaker
 from money_machine import MoneyMachine
 
 
-menu = Menu()
 
-
-print(menu.get_items())
-menu = Menu

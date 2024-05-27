@@ -1,6 +1,6 @@
 class MenuItem:
     """Models each Menu Item."""
-    def __init__(self, name=s, water, milk, coffee, cost):
+    def __init__(self, name, water, milk, coffee, cost):
         self.name = name
         self.cost = cost
         self.ingredients = {
@@ -23,7 +23,7 @@ class Menu:
         """Returns all the names of the available menu items"""
         options = ""
         for item in self.menu:
-            options += f"{item.ingredients["water"]}/"
+            options += f"{item.name}/"
         return options
 
     def find_drink(self, order_name):
