@@ -1,6 +1,34 @@
-class Question():
-    def __init__(self, q_text, q_answer):
-        self.text = q_text
-        self.answer = q_answer
+from xmlrpc.client import Boolean, boolean
 
 
+class QuizBrain:
+    
+    def __init__(self, q_list):
+        self.question_number = 0
+        self.question_list = q_list
+        self.score = 0
+        
+        
+    def next_question(self):
+        actual_question = self.question_list[self.question_number] 
+        self.question_number += 1
+        user_answer = input(f"Q.{self.question_number} - {actual_question.text} (True/False)\n-> ")
+        self.check_answer(user_answer, actual_question.answer)
+        
+        
+    def still_has_question(self) -> bool:
+        return self.question_number < len(self.question_list)
+    
+    def check_answer(self, user_answer, correct_answer):
+        if user_answer.lower() == correct_answer.lower():
+            print("You right")
+            self.score += 1
+        else:
+            print("Wrong :(")
+            print(f"The correct answer was: {correct_answer}")
+        
+        print(f"Score: {self.score}|{self.question_number}\n")
+        
+        
+        
+        
