@@ -26,6 +26,15 @@ turtle.penup()
 answer_state = screen.textinput(title="Guess a State", prompt="What is your guess?")
 
 while is_on:
+    if answer_state == "Exit":
+        missed_states = []
+        for state in data.state:
+            if state not in guessed_states:
+                missed_states.append(state)
+        missed_states_df = pd.DataFrame(missed_states)
+        missed_states_df.to_csv("/home/manu/100-Days-of-Code/PandasCSV/USquiz/day-25-us-states-game-start/to_learn.csv")
+        break
+    
     for state in data.state:
         if answer_state.capitalize() == state and answer_state.capitalize() not in guessed_states:
             guessed_states.append(state)
@@ -42,5 +51,3 @@ while is_on:
         is_on = False
     
     
-
-screen.exitonclick()
