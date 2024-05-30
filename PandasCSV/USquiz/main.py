@@ -1,7 +1,7 @@
 import pandas as pd
 import turtle
-IMAGE = "/home/manu/100-Days-of-Code/PandasCSV/USquiz/day-25-us-states-game-start/blank_states_img.gif"
-PATH = "/home/manu/100-Days-of-Code/PandasCSV/USquiz/day-25-us-states-game-start/50_states.csv"
+IMAGE = "/home/manu/100-Days-of-Code/PandasCSV/USquiz/blank_states_img.gif"
+PATH = "/home/manu/100-Days-of-Code/PandasCSV/USquiz/50_states.csv"
 is_on = True
 total_guess = 0
 guessed_states = []
@@ -32,7 +32,7 @@ while is_on:
             if state not in guessed_states:
                 missed_states.append(state)
         missed_states_df = pd.DataFrame(missed_states)
-        missed_states_df.to_csv("/home/manu/100-Days-of-Code/PandasCSV/USquiz/day-25-us-states-game-start/to_learn.csv")
+        missed_states_df.to_csv("/home/manu/100-Days-of-Code/PandasCSV/USquiz/to_learn.csv")
         break
     
     for state in data.state:
