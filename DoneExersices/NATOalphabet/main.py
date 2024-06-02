@@ -1,5 +1,5 @@
 import pandas as pd
-PATH = "/home/manu/100-Days-of-Code/NATOalphabet"
+PATH = "/home/manu/100-Days-of-Code/DoneExersices/NATOalphabet/"
 # #Looping through dictionaries:
 # for (key, value) in student_dict.items():
 #     #Access key and value
