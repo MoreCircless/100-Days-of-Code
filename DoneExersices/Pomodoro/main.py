@@ -1,6 +1,8 @@
 from tkinter import *
 import math
 
+from pyparsing import col
+
 
 
 # ---------------------------- CONSTANTS ------------------------------- #
@@ -119,6 +121,7 @@ canvas = Canvas(width=200, height=224, bg=YELLOW, highlightthickness=0)
 canvas.create_image(100, 112, image=tomato)
 timer_text = canvas.create_text(100, 130, text="00:00", fill="white", font=(FONT_NAME, 35, "bold"))
 canvas.grid(row=1,column=1)
+
 
 
 
