@@ -1,7 +1,7 @@
 from tkinter import *
 import math
 
-from pyparsing import col
+
 
 
 
