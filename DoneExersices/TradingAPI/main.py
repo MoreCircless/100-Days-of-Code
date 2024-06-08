@@ -13,20 +13,21 @@ NEWS_ENDPOINT = "https://newsapi.org/v2/everything"
 NEWS_KEY = "135f55c35ac3483093db8b835cec0011"
 
 
-# stock_rq = requests.get(f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=TSLA&interval=5min&apikey={STOCK_KEY}")
-# stock_ft = stock_rq.json()
+stock_rq = requests.get(f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=TSLA&interval=5min&apikey={STOCK_KEY}")
+stock_ft = stock_rq.json()
 
-# last_refresh = stock_ft["Meta Data"]["3. Last Refreshed"] # Date of the last refresh
-# one_day = timedelta(days=1)
-# close_value = stock_ft["Time Series (Daily)"][last_refresh]["4. close"]
-# last_refresh_ft = datetime.strptime(last_refresh, "%Y-%m-%d")
-# bf_close_value = stock_ft["Time Series (Daily)"][f"{last_refresh_ft.date() - timedelta(days=1)}"]["4. close"]
-# print(close_value)
-# print(bf_close_value)
+last_refresh = stock_ft["Meta Data"]["3. Last Refreshed"] # Date of the last refresh
+one_day = timedelta(days=1)
+close_value = stock_ft["Time Series (Daily)"][last_refresh]["4. close"]
+last_refresh_ft = datetime.strptime(last_refresh, "%Y-%m-%d")
+bf_close_value = stock_ft["Time Series (Daily)"][f"{last_refresh_ft.date() - timedelta(days=1)}"]["4. close"]
+
 
 close_value = 177.4800
 bf_close_value = 190
 last_refresh = "2024-6-6"
+
+
 change = abs(close_value - bf_close_value)
 change_ptg = (change/bf_close_value * 100)
 
