@@ -1,0 +1,23 @@
+
+*{
+    background: black;
+}
+
+
+h1{
+    color: white; background: black ;
+    text-align: center;
+    font-family: "Libre Baskerville" ;
+}
+h2{
+    color: white; background: black ;
+    text-align: center;
+}
+
+#imagen{width: 100%;
+}
+
+
+#firstdiv{
+    border: 5px solid white;
+}
