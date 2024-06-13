@@ -1,7 +1,7 @@
 import requests
 from datetime import time, datetime
 
-exercise_text = input("What exercise do you have done?")
+exercise_text = input("What exercise did you do today?\n-> ")
 # GENDER = 
 # WEIGHT_KG = 
 # HEIGHT_CM = 
@@ -27,13 +27,13 @@ inputs = {
 
 
 response = requests.post(url=f"{HOSTNUTRITION}{NATURALENDPOINT}",json=inputs, headers=nutrition_header )
-print(f"{HOSTNUTRITION}{NATURALENDPOINT}")
 result = response.json()
-print(result)
+
 
 exercise = result["exercises"][0]["name"]
 calories = result["exercises"][0]["nf_calories"]
 duration = result["exercises"][0]["duration_min"]
+
 
 sheetyendpoint = "https://api.sheety.co/69a2bf64984654c01496c348a088ac7b/copiaDeMyWorkouts/workouts"
 
