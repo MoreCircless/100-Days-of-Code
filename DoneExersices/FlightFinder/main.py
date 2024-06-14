@@ -14,16 +14,19 @@ TWILIO_VIRTUAL_NUMBER = os.getenv("TWILIO_VIRTUAL_NUMBER")
 TWILIO_NUMBER = os.getenv("TWILIO_VERIFIED_NUMBER")
 
 
-# client = Client(account, auth_token)
+client = Client(TWILIOID, TWILIO_KEY)
 
-# message = client.messages.create(
-#     from_=f"{twilionumber}",
-#     body="HOLA MUNDO",
-#     to=f"{usernumber}"
-# # )
-headers ={
-    "Authorization": f"{SHEETY_KEY}",
+message = client.messages.create(
+    from_=f"{TWILIO_VIRTUAL_NUMBER}",
+    body="HOLA MUNDO",
+    to=f"{TWILIO_NUMBER}"
+)
+
+print(message)
+print(message.sid)
+# headers ={
+#     "Authorization": f"{SHEETY_KEY}",
     
-}
-response = requests.get(url=f"{SHEETY_ENDPOINT}", headers=headers)
-print(response.text)
+# }
+# response = requests.get(url=f"{SHEETY_ENDPOINT}", headers=headers)
+# print(response.text)
