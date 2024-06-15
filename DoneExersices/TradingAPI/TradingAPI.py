@@ -4,8 +4,8 @@ from colorama import init, Fore
 
 init(autoreset=True)
 
-STOCK_NAME = "TSLA"
-COMPANY_NAME = "Tesla Inc"
+STOCK_NAME = "BTC"
+COMPANY_NAME = "Bitcoin"
 
 STOCK_ENDPOINT = "https://www.alphavantage.co/query"
 STOCK_KEY = "OWIDLYKS6DTVL4G4"
@@ -13,7 +13,7 @@ NEWS_ENDPOINT = "https://newsapi.org/v2/everything"
 NEWS_KEY = "135f55c35ac3483093db8b835cec0011"
 
 
-stock_rq = requests.get(f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=TSLA&interval=5min&apikey={STOCK_KEY}")
+stock_rq = requests.get(f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={STOCK_NAME}&interval=5min&apikey={STOCK_KEY}")
 stock_ft = stock_rq.json()
 
 last_refresh = stock_ft["Meta Data"]["3. Last Refreshed"] 
@@ -28,11 +28,11 @@ change_ptg = (float(change)/float(bf_close_value) * 100)
 
 
 if close_value > bf_close_value: 
-    print(Fore.GREEN + f"{COMPANY_NAME} stock {last_refresh}: \n   NASDAQ: TSLA 🔺 {change_ptg:.2f} %")
+    print(Fore.GREEN + f"{COMPANY_NAME} stock {last_refresh}: \n   NASDAQ: {STOCK_NAME} 🔺 {change_ptg:.2f} %")
 else: 
-    print(Fore.RED + f"{COMPANY_NAME} stock {last_refresh}: \n   NASDAQ: TSLA 🔻 {change_ptg:.2f} %")
+    print(Fore.RED + f"{COMPANY_NAME} stock {last_refresh}: \n   NASDAQ: {STOCK_NAME} 🔻 {change_ptg:.2f} %")
 
-news_call = requests.get(f"https://newsapi.org/v2/everything?q=tesla&apiKey={NEWS_KEY}")
+news_call = requests.get(f"https://newsapi.org/v2/everything?q={COMPANY_NAME}&apiKey={NEWS_KEY}")
 news_call = news_call.json()
 
 
